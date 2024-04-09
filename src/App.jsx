@@ -161,28 +161,29 @@ function App() {
           className="cards"
           justifyContent="center"
         >
-          {photos.length &&
-            data
-              ?.filter(
-                (_data) =>
-                  _data.name.toLowerCase().includes(search.toLowerCase()) ||
-                  _data.country.toLowerCase().includes(search.toLowerCase())
-              )
-              .map((_data) => {
-                const _photo = photos[_data.id];
+          {photos.length
+            ? data
+                ?.filter(
+                  (_data) =>
+                    _data.name.toLowerCase().includes(search.toLowerCase()) ||
+                    _data.country.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((_data) => {
+                  const _photo = photos[_data.id];
 
-                return (
-                  <Box className="card" key={_photo.id}>
-                    <img
-                      src={_photo.urls.regular}
-                      alt={_photo.description}
-                      key={_photo.id}
-                    />
-                    <Typography>{_data.name}</Typography>
-                    <Typography>{_data.country}</Typography>
-                  </Box>
-                );
-              })}
+                  return (
+                    <Box className="card" key={_photo.id}>
+                      <img
+                        src={_photo.urls.regular}
+                        alt={_photo.description}
+                        key={_photo.id}
+                      />
+                      <Typography>{_data.name}</Typography>
+                      <Typography>{_data.country}</Typography>
+                    </Box>
+                  );
+                })
+            : null}
         </Stack>
       </StyledBox>
     </Container>
